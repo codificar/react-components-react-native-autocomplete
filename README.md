@@ -1,4 +1,4 @@
-# react-native-autocomplete-codificar
+# react-native-autocomplete
 Componente para busca de API Places.
 
 ## Install
