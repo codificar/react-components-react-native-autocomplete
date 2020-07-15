@@ -4,7 +4,7 @@ Componente para busca de API Places.
 ## Install
 add in package.json:
 ```bash
-"react-native-autocomplete-codificar": "git+https://libs:ofImhksJ@git.codificar.com.br/react-components/react-native-autocomplete.git",
+"react-native-autocomplete": "git+https://libs:ofImhksJ@git.codificar.com.br/react-components/react-native-autocomplete.git",
 ```
 
 execute the command:
@@ -18,7 +18,7 @@ $ npm install
 
 ```javascript
 import React from 'react';
-import PlacesAutoComplete from "react-native-autocomplete-codificar";
+import PlacesAutoComplete from "react-native-autocomplete";
 
  
 
@@ -38,7 +38,7 @@ import PlacesAutoComplete from "react-native-autocomplete-codificar";
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container } from './styles';
-import PlacesAutoComplete from "react-native-autocomplete-codificar";
+import PlacesAutoComplete from "react-native-autocomplete";
 
  
 
