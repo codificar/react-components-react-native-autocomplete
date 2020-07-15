@@ -4,7 +4,7 @@ Componente para busca de API Places.
 ## Install
 add in package.json:
 ```bash
-"react-native-autocomplete-codificar": "git+https://libs:ofImhksJ@git.codificar.com.br/react-components/react-native-autocomplete-codificar.git",
+"react-native-autocomplete-codificar": "git+https://libs:ofImhksJ@git.codificar.com.br/react-components/react-native-autocomplete.git",
 ```
 
 execute the command:
