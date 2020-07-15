@@ -1,0 +1,34 @@
+{
+    "name": "react-native-autocomplete-codificar",
+    "version": "1.0.0",
+    "description": "A autocompletes component to react native",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT",
+
+    "repository": {
+      "type": "git",
+      "url": "git+https://git.codificar.com.br/react-components/react-native-autocomplete-codificar"
+    },
+    
+    "dependencies": {
+      "prop-types": "^15.7.2",
+      "axios": "^0.19.2",
+      "debounce": "^1.2.0",
+      "react-native-vector-icons": "^7.0.0"
+    },
+    "peerDependencies": {
+        "react-native": ">=0.60.0"
+    },
+
+    "author": "Codificar",
+
+    "bugs": {
+      "url": "https://git.codificar.com.br/react-components/react-native-autocomplete-codificar/issues"
+    },
+
+    "homepage": "https://git.codificar.com.br/react-components/react-native-autocomplete-codificar#readme"
+  }
