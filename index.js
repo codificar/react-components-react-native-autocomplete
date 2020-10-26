@@ -50,6 +50,7 @@ class AutoComplete extends Component {
       apiCount: 0,
       addressArray: [],
       isLoading: false,
+      clicker: ''
     }
   }
 
@@ -61,8 +62,8 @@ class AutoComplete extends Component {
 
 
   /**
-   * 
-   * @param {string} address 
+   *
+   * @param {string} address
    */
   handleTextInputChange(address) {
     if (address > this.state.address && address != ' ') {
@@ -79,11 +80,11 @@ class AutoComplete extends Component {
   }
 
   /**
-   * 
+   *
    * @param {Object} item
-   * @param {string} item.address 
+   * @param {string} item.address
    * @param {string} item.main_text
-   * @param {string} iitem.secondary_text 
+   * @param {string} iitem.secondary_text
    * @param {string} item.place_id
    * @param {string} item.latitude
    * @param {string} item.longitude
@@ -97,13 +98,14 @@ class AutoComplete extends Component {
       secondary_text,
       place_id,
       latitude,
-      longitude
+      longitude,
+      clicker: this.state.clicker
     });
   }
 
   /**
-   * 
-   * @param {string} address 
+   *
+   * @param {string} address
    */
   handleAutoComplete(address) {
     this.setState((state) => {
@@ -120,9 +122,9 @@ class AutoComplete extends Component {
       .then(response => {
         console.log(response.config.params);
         const result = response.data;
-
+        console.log("handleAutoComplete", response);
         this.setState((state) => {
-          return { addressArray: result.data, isLoading: false };
+          return { addressArray: result.data, isLoading: false, clicker: result.clicker };
         });
       })
       .catch(error => {
