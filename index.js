@@ -66,7 +66,7 @@ class AutoComplete extends Component {
    * @param {string} address
    */
   handleTextInputChange(address) {
-    if (address > this.state.address && address != ' ') {
+    if (address != this.state.address && address != ' ') {
       this.setState({ isLoading: true });
       this.debounceAutocomplete(address);
       this.setState({ address });
