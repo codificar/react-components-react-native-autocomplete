@@ -50,7 +50,8 @@ class AutoComplete extends Component {
       apiCount: 0,
       addressArray: [],
       isLoading: false,
-      clicker: ''
+      clicker: '',
+      showAddresseList: false
     }
   }
 
@@ -58,6 +59,10 @@ class AutoComplete extends Component {
   componentDidMount() {
     const { delay } = this.props;
     this.debounceAutocomplete = debounce(this.handleAutoComplete.bind(this), delay);
+  }
+
+  ChangeShowAddresseList(value) {
+    this.setState({showAddresseList: value});
   }
 
 
@@ -124,7 +129,7 @@ class AutoComplete extends Component {
         const result = response.data;
         console.log("handleAutoComplete", response);
         this.setState((state) => {
-          return { addressArray: result.data, isLoading: false, clicker: result.clicker };
+          return { addressArray: result.data, isLoading: false, clicker: result.clicker, showAddresseList: true };
         });
       })
       .catch(error => {
@@ -150,7 +155,7 @@ class AutoComplete extends Component {
    * Proxy `clear()` to autocomplete's text input.
    */
   clear() {
-    this.setState({ addressArray: [] });
+    this.setState({ addressArray: [], address: '' });
     const { textInput } = this;
     return textInput && textInput.clear();
   }
@@ -177,7 +182,7 @@ class AutoComplete extends Component {
           />
           <View style={styles.areaIcons}>
             <ActivityIndicator animating={this.state.isLoading} />
-            {this.state.address ? <Icon name="close" size={20} color="#777" onPress={() => this.clear()} /> : null}
+            {!this.state.isLoading ? <Icon name="close" size={20} color="#777" onPress={() => this.clear()} /> : null}
           </View>
         </View>
 
@@ -191,6 +196,7 @@ class AutoComplete extends Component {
           </TouchableOpacity>
         )
         }
+        {this.state.showAddresseList && (
         <FlatList
           contentContainerStyle={{ paddingBottom: 15, paddingHorizontal: 20 }}
           style={{ marginTop: 10 }}
@@ -206,7 +212,9 @@ class AutoComplete extends Component {
             </TouchableOpacity>
 
           )}
-        />
+          />
+          )
+        }
       </>
     );
   }
@@ -223,6 +231,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   textInput: {
+    flex: 5,
     marginLeft: 5,
   },
   button: {
@@ -244,6 +253,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   areaIcons: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
