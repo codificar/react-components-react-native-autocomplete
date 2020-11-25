@@ -29,6 +29,11 @@ interface AutoCompleteProps extends TextInputProps {
   delay?: number;
 
   /**
+   * autocomplete call timeout
+   */
+  minLength?: number;
+
+  /**
    * route for API request
    */
   route: string;

@@ -23,6 +23,7 @@ class AutoComplete extends Component {
     params: PropTypes.object.isRequired,
     route: PropTypes.string.isRequired,
     delay: PropTypes.number,
+    minLength: PropTypes.number,    
     showButton: PropTypes.bool,
     onButtonPress: PropTypes.func,
     buttonColor: PropTypes.string,
@@ -32,6 +33,7 @@ class AutoComplete extends Component {
 
   static defaultProps = {
     delay: 1000,
+    minLength: 4,
     showButton: false,
     buttonColor: '#6eb986',
     buttonTextColor: '#ffffff',
@@ -65,19 +67,23 @@ class AutoComplete extends Component {
     this.setState({showAddresseList: value});
   }
 
+  setAddressText(value) {
+    this.setState({address: value});
+  }
+
 
   /**
    *
    * @param {string} address
    */
-  handleTextInputChange(address) {
-    if (address != this.state.address && address != ' ') {
+  handleTextInputChange(address) {   
+    if (address.trim() != this.state.address.trim() && address.trim() != ' ' && address.trim().length >= this.props.minLength) {
       this.setState({ isLoading: true });
-      this.debounceAutocomplete(address);
+      this.debounceAutocomplete(address);      
       this.setState({ address });
-
       return;
     }
+    this.setState({ address });
 
     if (address.length === 0) {
       this.setState({ addressArray: [] });
@@ -125,15 +131,13 @@ class AutoComplete extends Component {
       }
     })
       .then(response => {
-        console.log(response.config.params);
         const result = response.data;
-        console.log("handleAutoComplete", response);
         this.setState((state) => {
           return { addressArray: result.data, isLoading: false, clicker: result.clicker, showAddresseList: true };
         });
       })
       .catch(error => {
-        console.log(error);
+        console.log("handleAutoComplete", error);
         this.setState({ isLoading: false });
       });
   }
