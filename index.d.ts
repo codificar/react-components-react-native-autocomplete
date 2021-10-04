@@ -67,6 +67,8 @@ interface AutoCompleteProps extends TextInputProps {
    * @param {*} lang | language from settings. Exemple: 'pt-br'
    */
   params: any;
+
+  purveyorPlaces: string;
 }
 
 export default class AutoComplete extends React.Component<

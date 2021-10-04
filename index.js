@@ -29,6 +29,7 @@ class AutoComplete extends Component {
     buttonColor: PropTypes.string,
     buttonTextColor: PropTypes.string,
     getDataAutocomplete: PropTypes.func.isRequired,
+    purveyorPlaces: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
@@ -53,7 +54,8 @@ class AutoComplete extends Component {
       addressArray: [],
       isLoading: false,
       clicker: '',
-      showAddresseList: false
+      showAddresseList: false,
+      uuidv4: this.uuidv4()
     }
   }
 
@@ -112,6 +114,8 @@ class AutoComplete extends Component {
       longitude,
       clicker: this.state.clicker
     });
+
+    this.setState({ uuidv4: this.uuidv4() });
   }
 
   /**
@@ -123,12 +127,22 @@ class AutoComplete extends Component {
       return { apiCount: state.apiCount + 1, isLoading: true };
     });
 
+    let placesParams = {
+      ...this.props.params,
+      place: address,
+      count_api_calls: this.state.apiCount,
+    }
+
+    if(this.props.purveyorPlaces=='google_maps')
+    {
+      Object.assign(
+        placesParams,
+        { sessionToken: this.state.uuidv4 }
+      );
+    }
+
     axios.get(this.props.route, {
-      params: {
-        ...this.props.params,
-        place: address,
-        count_api_calls: this.state.apiCount,
-      }
+      params: placesParams
     })
       .then(response => {
         const result = response.data;
@@ -169,6 +183,13 @@ class AutoComplete extends Component {
     this.clear();
   }
 
+  uuidv4()
+  {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
   render() {
     const { buttonColor, buttonTextColor, showButton } = this.props;
