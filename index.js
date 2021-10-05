@@ -112,7 +112,8 @@ class AutoComplete extends Component {
       place_id,
       latitude,
       longitude,
-      clicker: this.state.clicker
+      clicker: this.state.clicker,
+      sessionToken: this.state.uuidv4
     });
 
     this.setState({ uuidv4: this.uuidv4() });
