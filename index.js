@@ -30,6 +30,7 @@ class AutoComplete extends Component {
     buttonTextColor: PropTypes.string,
     getDataAutocomplete: PropTypes.func.isRequired,
     purveyorPlaces: PropTypes.string.isRequired,
+    refreshSessionDeflateSearch: PropTypes.string
   }
 
   static defaultProps = {
@@ -87,7 +88,11 @@ class AutoComplete extends Component {
     }
     this.setState({ address });
 
-    if (address.length === 0) {
+    if (address.length === 0)
+    {
+      if(this.props.refreshSessionDeflateSearch == true)
+        this.setState({ uuidv4: this.uuidv4() });
+
       this.setState({ addressArray: [] });
     }
   }
@@ -174,6 +179,9 @@ class AutoComplete extends Component {
    * Proxy `clear()` to autocomplete's text input.
    */
   clear() {
+    if(this.props.refreshSessionDeflateSearch == true)
+      this.setState({ uuidv4: this.uuidv4() });
+
     this.setState({ addressArray: [], address: '' });
     const { textInput } = this;
     return textInput && textInput.clear();
