@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { debounce } from 'debounce';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/AntDesign';
+import strings from './lang/strings';
 
 import {
   FlatList,
@@ -40,7 +41,7 @@ class AutoComplete extends Component {
     buttonColor: '#6eb986',
     buttonTextColor: '#ffffff',
     onButtonPress: () => Alert.alert('pressable button'),
-    placeholder: "Endereço e número"
+    placeholder: strings.autocomplete.placeholder
   }
 
   constructor(props) {
