@@ -7,7 +7,7 @@ const deviceLanguage =
 		? NativeModules.SettingsManager.settings.AppleLanguages[0]
 		: NativeModules.I18nManager.localeIdentifier;
 
-  if(deviceLanguage == 'es_PY' || deviceLanguage.includes() == 'es'){
+  if(deviceLanguage == 'es_PY' || deviceLanguage.includes('es')){
     strings = require('./es-PY.json');
   }
 
