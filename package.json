@@ -11,7 +11,7 @@
 
     "repository": {
       "type": "git",
-      "url": "git+https://git.codificar.com.br/react-components/react-native-autocomplete"
+      "url": "git+https://github.com/codificar/react-components-react-native-autocomplete"
     },
     
     "dependencies": {
@@ -27,8 +27,8 @@
     "author": "Codificar",
 
     "bugs": {
-      "url": "https://git.codificar.com.br/react-components/react-native-autocomplete/issues"
+      "url": "https://github.com/codificar/react-components-react-native-autocomplete/issues"
     },
 
-    "homepage": "https://git.codificar.com.br/react-components/react-native-autocomplete#readme"
+    "homepage": "https://github.com/codificar/react-components-react-native-autocomplete#readme"
   }
