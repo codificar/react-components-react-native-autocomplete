@@ -213,7 +213,6 @@ class AutoComplete extends Component {
             value={this.state.address}
             onChangeText={(address) => this.handleTextInputChange(address)}
             ref={this.onRefTextInput}
-            autoFocus
           />
           <View style={styles.areaIcons}>
             <ActivityIndicator animating={this.state.isLoading} />
@@ -238,14 +237,12 @@ class AutoComplete extends Component {
           data={this.state.addressArray}
           keyExtractor={(x, i) => i.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => this.handleClick(item)}
-              activeOpacity={0.6}
+            <View
+              onTouchStart={() => this.handleClick(item)}
               style={styles.item}
             >
               <Text>{item.address}</Text>
-            </TouchableOpacity>
-
+            </View>
           )}
           />
           )
