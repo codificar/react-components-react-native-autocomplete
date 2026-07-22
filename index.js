@@ -31,7 +31,7 @@ class AutoComplete extends Component {
     buttonTextColor: PropTypes.string,
     getDataAutocomplete: PropTypes.func.isRequired,
     purveyorPlaces: PropTypes.string.isRequired,
-    refreshSessionDeflateSearch: PropTypes.string
+    refreshSessionDeflateSearch: PropTypes.bool
   }
 
   static defaultProps = {

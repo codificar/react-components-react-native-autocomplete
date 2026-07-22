@@ -70,7 +70,7 @@ interface AutoCompleteProps extends TextInputProps {
 
   purveyorPlaces: string;
 
-  refreshSessionDeflateSearch: string;
+  refreshSessionDeflateSearch: boolean;
 }
 
 export default class AutoComplete extends React.Component<
